@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
 // });
 
 userSchema.pre('save', async function (next) {
-  let hashed = await bcrypt.hash(userSchema.password, 10); //TODO - did i do this right?
+  let hashed = await bcrypt.hash(this.password, 10); //TODO - did i do this right?
   next();
 })
 
@@ -29,7 +29,7 @@ userSchema.pre('save', async function (next) {
 
 userSchema.methods.authenticateUser = async function (password) {
   const valid = await bcrypt.compare(password, hashed); //TODO - did i do this right?
-
+  return valid;
 }
 
 const User = mongoose.model('user', userSchema);
