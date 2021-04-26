@@ -10,6 +10,9 @@
 - [ci/cd](https://github.com/arpatterson31/basic-auth/actions)
 - [Pull Request dev to main](https://github.com/arpatterson31/basic-auth/pull/1)
 
+- [Mongoose pre-save hook](https://mongoosejs.com/docs/middleware.html#pre)
+- [Mongoose Methods on schemas](https://mongoosejs.com/docs/guide.html#methods)
+
 ### Setup
 
 #### `.env` requirements (when applicable)
