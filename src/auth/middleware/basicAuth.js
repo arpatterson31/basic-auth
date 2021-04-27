@@ -6,7 +6,7 @@
 // Add the user record (if valid) to the request object and call next()
 // Call next() with an error in the event of a bad login
 
-const bcrypt = require('bcrypt')
+// const bcrypt = require('bcrypt')
 const base64 = require('base-64');
 const User = require('../models/user-schema.js');
 
@@ -18,10 +18,8 @@ async function basicAuth(req, res, next) {
   let decoded = base64.decode(encoded);
 
   let [username, password] = decoded.split(':');
-  console.log('un and pw', username, password);
-
+  
   let validUser = await User.authenticateUser(username, password);
-  console.log(validUser);
   next();
 };
 

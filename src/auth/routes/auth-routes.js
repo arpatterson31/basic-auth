@@ -12,14 +12,7 @@ authRouter.post('/signup', newSignUp);
 
 async function newSignUp(req, res, next) {
   try {
-    console.log('req body', req.body);
-    // req.body.password = await bcrypt.hash(req.body.password, 10);
-    // const userObj = {
-    //   username: req.body.username,
-    //   password: req.body.password
-    // }
     const user = new User(req.body);
-    console.log('user', user);
     const record = await user.save();
     res.status(201).json(record);
   }

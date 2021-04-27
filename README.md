@@ -30,7 +30,7 @@ i.e.
 - How do you run tests?
   - run `npm test` in the terminal from root
 - Any tests of note?
-  - POST to/signup to create a new user
+  - POST to /signup to create a new user
   - POST to /signin to login as a user (use basic auth)
   - Need tests for auth middleware and the routes
     - Does the middleware function(send it as a basic header)

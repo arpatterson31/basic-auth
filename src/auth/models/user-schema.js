@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 // Model the user data
 
 const userSchema = mongoose.Schema({
-  username: { type: String, required: true },
+  username: { type: String, required: true, unique: true },
   password: { type: String, required: true }
 });
 
@@ -21,17 +21,17 @@ const userSchema = mongoose.Schema({
 
 userSchema.pre('save', async function (next) {
   this.password = await bcrypt.hash(this.password, 10);
-  next(); //TODO - did i do this right?
+  next(); 
 })
 
 // Create a method in the schema to authenticate a user using the hashed password
 // Schema.method() adds instance methods to the Schema.methods object. You can also add instance methods directly to the Schema.methods
 
-userSchema.statics.authenticateUser = async function (un, pw) {
-  const user = await this.findOne({ username: un })
-  console.log('user', user);
-  const valid = await bcrypt.compare(pw, user.password);
-  console.log('valid', valid);
+userSchema.statics.authenticateUser = async function (username, password) {
+  const user = await this.findOne({ username: username })
+  
+  const valid = await bcrypt.compare(password, user.password);
+  
   if (valid) {
     return user;
   }
