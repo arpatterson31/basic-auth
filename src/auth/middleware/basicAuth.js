@@ -18,19 +18,11 @@ async function basicAuth(req, res, next) {
   let decoded = base64.decode(encoded);
 
   let [username, password] = decoded.split(':');
+  console.log('un and pw', username, password);
 
-  try {
-    const user = await User.findOne({ username: username })
-    const valid = await bcrypt.compare(password, user.password);
-    if (valid) {
-      res.status(200).json(user);
-    }
-    else {
-      throw new Error('Invalid User')
-    }
-  } 
-  catch (error) { res.status(403).send('Invalid Login'); }
-
+  let validUser = await User.authenticateUser(username, password);
+  console.log(validUser);
+  next();
 };
 
 module.exports = basicAuth;
