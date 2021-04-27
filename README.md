@@ -12,6 +12,7 @@
 
 - [Mongoose pre-save hook](https://mongoosejs.com/docs/middleware.html#pre)
 - [Mongoose Methods on schemas](https://mongoosejs.com/docs/guide.html#methods)
+- TA Joe Pennock helped with the method on the schema using the .stricts
 
 ### Setup
 
